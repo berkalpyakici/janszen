@@ -20,4 +20,12 @@ def send_dependencies(path):
 def index():
     return render_template("index.html")
 
+@app.route('/search', methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        city = request.form['city']
+        print(city)
+    return render_template('index.html')
+
+
 app.run()
