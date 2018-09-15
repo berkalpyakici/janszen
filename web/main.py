@@ -21,19 +21,18 @@ def index():
     return render_template("index.html")
 
 @app.route('/search-text', methods=['GET','POST'])
-def search-text():
+def search_text():
     if request.method == 'POST':
         city = request.form['city']
         print(city)
-    return render_template('index.html')
+    return render_template("map.html")
 
 @app.route('/search-geolocation', methods=['GET','POST'])
-def search-text():
+def search_geolocation():
     if request.method == 'POST':
         latitude = request.form['latitude']
         longitude = request.form['longitude']
         print(latitude, longitude)
-    return render_template('index.html')
-
+    return render_template("map.html")
 
 app.run()
