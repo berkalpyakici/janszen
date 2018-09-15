@@ -36,12 +36,12 @@
       </div>
 
       <div class="search-box px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <form id="formLocation" class="text-left" method="post" action="search">
+        <form id="formLocation" class="text-left" method="post" action="search-text">
           <label for="inputLocation">Enter City</label>
           <div class="row">
             <div class="col-sm-10">
               <div class="form-group input-group">
-                <input type="text" class="form-control" id="inputLocation" placeholder="Houston">
+                <input type="text" class="form-control" id="inputLocation" name="city" placeholder="Houston">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" id="inputGeoLocation" onclick="getLocation();"><span class="oi oi-location"></span></button>
                 </div>
