@@ -32,7 +32,7 @@ function getLocation() {
 function sendPosition(position) {
     $.post( "search-geolocation", { latitude:  position.coords.latitude, longitude: position.coords.longitude })
     .done(function( data ) {
-      mapDiv.innerHTML = "Data: "+data;
+      $("#map").html(data);
       doneWorking();
     });
 }
