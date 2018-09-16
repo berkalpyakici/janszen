@@ -18,7 +18,7 @@ from datetime import datetime
 
 class maps():
     """
-    Generates list of 
+    Generates list of grocery stores based on an input from the user's search
     """
 
     def __init__():
@@ -46,11 +46,10 @@ class grocery():
     #an initializer, a name?
     def __init__(latitude=29.756, longitude=95.357):
         self.lat = latitude
+        self.long = longitude
 
-    def within_mile(lat, long):
-        """
-        Input:
-        """
+
+
 
 #first = new grocery(some_lat, some_long)
 #first.within_mile(another_lat, another_long)
