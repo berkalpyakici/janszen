@@ -72,4 +72,4 @@ def search_geolocation():
 
     return render_template("map.html", locations = locationslist, map_zoom = 12, map_center_lat = output[1][0], map_center_lng = output[1][1])
 
-app.run(host='127.0.0.1', port=8080)
+app.run(host='127.0.0.1', port=80)

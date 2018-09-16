@@ -35,11 +35,12 @@ class maps():
         if self.gmaps.geocode(address=str(zipcode)):
             location_data = self.gmaps.geocode(address=str(zipcode))[0]
 
-            lat_long_dict = location_data["geometry"]["bounds"]["northeast"]
+            if len(location_data["geometry"]) >= 1:
+                lat_long_dict = location_data["geometry"]["location"]
 
-            location_tuple = (float(lat_long_dict['lat']),float(lat_long_dict['lng']))
+                location_tuple = (float(lat_long_dict['lat']),float(lat_long_dict['lng']))
 
-            local = self.gmaps.places_nearby(location=location_tuple,radius=24140,type="supermarket")
+                local = self.gmaps.places_nearby(location=location_tuple,radius=24140,type="supermarket")
 
         return [local,location_tuple]
 
