@@ -22,7 +22,7 @@ class maps():
     """
 
     def __init__(self):
-        self.gmaps = googlemaps.Client(key='AIzaSyAAJnnaSI6ivwFneYGiILu700jVWHDfw0c')
+        self.gmaps = googlemaps.Client(key='AIzaSyALWfIYXkrZEeom3lvdoAkm3x5TpIq5L7I')
 
     def zipcode_data(self,zipcode):
         """
