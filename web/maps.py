@@ -29,14 +29,21 @@ class maps():
         Input: An integer representing a zipcode
         Output: A list of grocery stores within the zipcode
         """
-        return ""
+
+        local = self.gmaps.local_search(zipcode + "grocery store")
+        result = local['responseData']['results'][0]
+        print(result['titleNoFormatting'])
+        return result['titleNoFormatting']
 
     def city_data():
         """
-        Input: String representing
+        Input: String representing a city's name
         Output: A list of grocery stores within a city
         """
         return ""
+
+    def local_search():
+        ""
 
 
 
@@ -47,6 +54,7 @@ class grocery():
     def __init__(latitude=29.756, longitude=95.357):
         self.lat = latitude
         self.long = longitude
+
 
 
 
