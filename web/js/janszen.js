@@ -2,8 +2,8 @@ $(document).ready(function() {
 
     var optionsLocation = {
         target:        '#map',
-        beforeSubmit:  disableFields,
-        success: enableFields
+        beforeSubmit:  workingBackground,
+        success: doneWorking
     };
 
     // bind to the form's submit event
@@ -13,13 +13,14 @@ $(document).ready(function() {
     });
 });
 
-var mapDiv = document.getElementById("map");
-var inputText = document.getElementById("inputLocation");
-var inputGeoButton = document.getElementById("inputGeoLocation");
-var inputSubmitButton = document.getElementById("inputSubmitButton");
+mapDiv = document.getElementById("map");
+loadingDiv = document.getElementById("loading");
+inputText = document.getElementById("inputLocation");
+inputGeoButton = document.getElementById("inputGeoLocation");
+inputSubmitButton = document.getElementById("inputSubmitButton");
 
 function getLocation() {
-    disableFields();
+    workingBackground();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(sendPosition);
     } else {
@@ -31,8 +32,8 @@ function getLocation() {
 function sendPosition(position) {
     $.post( "search-geolocation", { latitude:  position.coords.latitude, longitude: position.coords.longitude })
     .done(function( data ) {
-      mapDiv.innerHTML = data;
-      enableFields();
+      mapDiv.innerHTML = "Data: "+data;
+      doneWorking();
     });
 }
 
@@ -46,4 +47,16 @@ function enableFields() {
   $(inputText).attr('disabled', false);
   $(inputGeoButton).attr('disabled', false);
   $(inputSubmitButton).attr('disabled', false);
+}
+
+function workingBackground() {
+  disableFields();
+  mapDiv.style.display = 'none';
+  loadingDiv.style.display = 'block';
+}
+
+function doneWorking() {
+  enableFields();
+  mapDiv.style.display = 'block';
+  loadingDiv.style.display = 'none';
 }
