@@ -21,29 +21,27 @@ class maps():
     Generates list of grocery stores based on an input from the user's search
     """
 
-    def __init__():
+    def __init__(self):
         self.gmaps = googlemaps.Client(key='AIzaSyAAJnnaSI6ivwFneYGiILu700jVWHDfw0c')
-
-    def zipcode_data(zipcode):
+        
+    def zipcode_data(self,zipcode):
         """
         Input: An integer representing a zipcode
         Output: A list of grocery stores within the zipcode
         """
 
-        local = self.gmaps.local_search(zipcode + "grocery store")
-        result = local['responseData']['results'][0]
-        print(result['titleNoFormatting'])
+        local = self.gmaps.places_nearby(location=zipcode,keyword="grocery")
+        #result = local['responseData']['results'][0]
+        print(local)
         return result['titleNoFormatting']
 
-    def city_data():
+    def city_data(self):
         """
         Input: String representing a city's name
         Output: A list of grocery stores within a city
         """
         return ""
 
-    def local_search():
-        ""
 
 
 
@@ -51,20 +49,16 @@ class grocery():
 
     #lat, longitude, distance from another grocery object
     #an initializer, a name?
-    def __init__(latitude=29.756, longitude=95.357):
+    def __init__(self,latitude=29.756, longitude=95.357):
         self.lat = latitude
         self.long = longitude
 
 
-
+m = maps()
+m.zipcode_data(76012)
 
 
 #first = new grocery(some_lat, some_long)
 #first.within_mile(another_lat, another_long)
 
 #grocery(within_mile(lat))
-
-print(directions_result)
-
-
-def fetch_grocery(city):
