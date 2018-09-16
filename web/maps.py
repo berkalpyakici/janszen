@@ -30,9 +30,12 @@ class maps():
         Output: A list of grocery stores within the zipcode
         """
         location_data = self.gmaps.geocode(address=str(zipcode))[0]
-        lat_long = location_data["geometry"]["bounds"]["northeast"]
-        local = self.gmaps.places_nearby(location=lat_long,keyword="grocery")
-        #result = local['responseData']['results'][0]
+        lat_long_dict = location_data["geometry"]["bounds"]["northeast"]
+        print(lat_long_dict)
+        location_tuple = (float(lat_long_dict['lat']),float(lat_long_dict['lng']))
+        print(location_tuple)
+        local = self.gmaps.places_nearby(location=location_tuple,radius=8046,type="supermarket")
+        print(local)
         #print(local)
         return ""
 
@@ -64,7 +67,7 @@ class grocery():
 
 
 m = maps()
-m.zipcode_data(76012)
+m.zipcode_data(77005)
 
 
 #first = new grocery(some_lat, some_long)
