@@ -23,17 +23,18 @@ class maps():
 
     def __init__(self):
         self.gmaps = googlemaps.Client(key='AIzaSyAAJnnaSI6ivwFneYGiILu700jVWHDfw0c')
-        
+
     def zipcode_data(self,zipcode):
         """
         Input: An integer representing a zipcode
         Output: A list of grocery stores within the zipcode
         """
-
-        local = self.gmaps.places_nearby(location=zipcode,keyword="grocery")
+        location_data = self.gmaps.geocode(address=str(zipcode))[0]
+        lat_long = location_data["geometry"]["bounds"]["northeast"]
+        local = self.gmaps.places_nearby(location=lat_long,keyword="grocery")
         #result = local['responseData']['results'][0]
-        print(local)
-        return result['titleNoFormatting']
+        #print(local)
+        return ""
 
     def city_data(self):
         """
@@ -41,6 +42,14 @@ class maps():
         Output: A list of grocery stores within a city
         """
         return ""
+
+    def convert_zip(self,zipcode):
+        """
+        Input: a zipcode represented as an integer
+        Output: the latitude and longitude
+        """
+        return ""
+
 
 
 
