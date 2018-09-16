@@ -29,15 +29,28 @@ class maps():
         Input: An integer representing a zipcode
         Output: A list of grocery stores within the zipcode
         """
-        location_data = self.gmaps.geocode(address=str(zipcode))[0]
-        lat_long_dict = location_data["geometry"]["bounds"]["northeast"]
-        print(lat_long_dict)
-        location_tuple = (float(lat_long_dict['lat']),float(lat_long_dict['lng']))
-        print(location_tuple)
-        local = self.gmaps.places_nearby(location=location_tuple,radius=8046,type="supermarket")
-        print(local)
-        #print(local)
-        return ""
+
+        local = []
+        location_tuple = ()
+        if self.gmaps.geocode(address=str(zipcode)):
+            location_data = self.gmaps.geocode(address=str(zipcode))[0]
+
+            lat_long_dict = location_data["geometry"]["bounds"]["northeast"]
+
+            location_tuple = (float(lat_long_dict['lat']),float(lat_long_dict['lng']))
+
+            local = self.gmaps.places_nearby(location=location_tuple,radius=24140,type="supermarket")
+
+        return [local,location_tuple]
+
+    def geolocation_data(self,location_tuple):
+        """
+        Input: An integer representing a zipcode
+        Output: A list of grocery stores within the zipcode
+        """
+        local = self.gmaps.places_nearby(location=location_tuple,radius=24140,type="supermarket")
+
+        return [local,location_tuple]
 
     def city_data(self):
         """
@@ -53,10 +66,6 @@ class maps():
         """
         return ""
 
-
-
-
-
 class grocery():
 
     #lat, longitude, distance from another grocery object
@@ -64,10 +73,6 @@ class grocery():
     def __init__(self,latitude=29.756, longitude=95.357):
         self.lat = latitude
         self.long = longitude
-
-
-m = maps()
-m.zipcode_data(77005)
 
 
 #first = new grocery(some_lat, some_long)
